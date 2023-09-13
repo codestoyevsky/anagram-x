@@ -37,13 +37,15 @@ public class Main {
                 // Feature #2
                 case 2 -> {
                     System.out.println("Enter a text to find anagrams:");
-                    String input = scanner.next();
+                    String input = scanner.nextLine();
 
                     List<String> result = new ArrayList<>();
                     Set<String> visited = new HashSet<>();
-                    mainInput = input;
 
-                    findAnagrams(input, result, visited);
+                    var cleanedInput = input.trim().toLowerCase();
+                    mainInput = cleanedInput;
+
+                    findAnagrams(cleanedInput, result, visited);
 
                     if (result.isEmpty()) {
                         System.out.println("No anagrams found for the given text.");
