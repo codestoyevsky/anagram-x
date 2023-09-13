@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/angaram-x.iml" filepath="$PROJECT_DIR$/angaram-x.iml" />
+      <module fileurl="file://$PROJECT_DIR$/anagram-x.iml" filepath="$PROJECT_DIR$/anagram-x.iml" />
     </modules>
   </component>
 </project>
