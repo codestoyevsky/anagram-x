@@ -7,7 +7,7 @@ import java.util.*;
 // * Anagram Definition : https://en.wikipedia.org/wiki/Anagram
 
 public class Utils {
-    public static Map<String, List<String>> anagramMap = new HashMap<>();
+    public static Map<String, HashSet<String>> anagramMap = new HashMap<>();
     public static String mainInput;
 
     public static boolean areAnagrams(String str1, String str2) {
@@ -33,14 +33,12 @@ public class Utils {
 
     // This can be called inside areAnagrams directly, did not want to break Singleton rule (S_OLID)
     public static void addAnagrams(String key, String value) {
-        List<String> anagrams = anagramMap.computeIfAbsent(key, k -> new ArrayList<>());
-        if (!anagrams.contains(value)) {
-            anagrams.add(value);
-        }
+        HashSet<String> anagrams = anagramMap.computeIfAbsent(key, k -> new HashSet<>());
+        anagrams.add(value);
     }
 
-    public static void findAnagrams(String input, List<String> result, Set<String> visited) {
-        List<String> anagrams = anagramMap.get(input);
+    public static void findAnagrams(String input, Set<String> result, Set<String> visited) {
+        Set<String> anagrams = anagramMap.get(input);
         if (anagrams == null || visited.contains(input)) return;
 
         visited.add(input);

@@ -28,13 +28,13 @@ public class MainTest {
 
         Utils.areAnagrams("1234", "56789");
 
-        List<String> results = new ArrayList<>();
+        Set<String> results = new HashSet<>();
         Set<String> visited = new HashSet<>();
         var input = "1234";
         Utils.mainInput = input;
         Utils.findAnagrams(input, results, visited);
-        String[] expectedResult = {"4321", "2341", "3412"};
-        assertEquals(Arrays.stream(expectedResult).toList(), results);
+        Set<String> expectedResult = new HashSet<>(Arrays.asList("4321", "2341", "3412"));
+        assertEquals(expectedResult, results);
     }
 
     // Feature #2, Complex scenario
@@ -51,12 +51,12 @@ public class MainTest {
 
         Utils.areAnagrams("1234", "56789");
 
-        List<String> results = new ArrayList<>();
+        Set<String> results = new HashSet<>();
         Set<String> visited = new HashSet<>();
         var input = "2341";
         Utils.mainInput = input;
         Utils.findAnagrams(input, results, visited);
-        String[] expectedResult = {"1234", "4321", "3412"};
-        assertEquals(Arrays.stream(expectedResult).toList(), results);
+        Set<String> expectedResult = new HashSet<>(Arrays.asList("1234", "4321", "3412"));
+        assertEquals(expectedResult, results);
     }
 }

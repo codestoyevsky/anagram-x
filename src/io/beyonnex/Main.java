@@ -39,7 +39,7 @@ public class Main {
                     System.out.println("Enter a text to find anagrams:");
                     String input = scanner.nextLine();
 
-                    List<String> result = new ArrayList<>();
+                    Set<String> result = new HashSet<>();
                     Set<String> visited = new HashSet<>();
 
                     var cleanedInput = input.trim().toLowerCase();
