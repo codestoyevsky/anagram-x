@@ -5,7 +5,6 @@ import java.util.*;
 import static io.beyonnex.Utils.*;
 
 public class Main {
-    public static String mainInput;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -32,8 +31,7 @@ public class Main {
                     boolean areAnagrams = areAnagrams(str1, str2);
                     System.out.printf("These texts %s anagrams%n", areAnagrams ? "are" : "are not");
                     if (areAnagrams) {
-                        addAnagrams(str1, str2);
-                        addAnagrams(str2, str1);
+                        Utils.saveAnagrams(str1, str2);
                     }
                 }
                 // Feature #2
@@ -62,24 +60,6 @@ public class Main {
         }
 
         scanner.close();
-    }
-
-    private static void findAnagrams(String input, List<String> result, Set<String> visited) {
-        List<String> anagrams = anagramMap.get(input);
-        if (anagrams == null || visited.contains(input)) return;
-
-        visited.add(input);
-
-        List<String> filteredAnagrams = anagrams.stream()
-                .filter(anagram -> !anagram.equals(mainInput) && !result.contains(anagram))
-                .toList();
-
-
-        result.addAll(filteredAnagrams);
-
-        for (String anagram : filteredAnagrams) {
-            findAnagrams(anagram, result, visited);
-        }
     }
 
 }

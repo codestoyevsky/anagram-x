@@ -3,10 +3,13 @@ package io.beyonnex;
 import java.util.*;
 
 
+// * To make the code more testable I moved the needed methods here
+// * Anagram Definition : https://en.wikipedia.org/wiki/Anagram
+
 public class Utils {
     public static Map<String, List<String>> anagramMap = new HashMap<>();
+    public static String mainInput;
 
-    // Anagram Definition : https://en.wikipedia.org/wiki/Anagram
     public static boolean areAnagrams(String str1, String str2) {
 
         // Trim and convert to lowercase
@@ -28,10 +31,34 @@ public class Utils {
         return Arrays.equals(charArray1, charArray2);
     }
 
+    // This can be called inside areAnagrams directly, did not want to break Singleton rule (S_OLID)
     public static void addAnagrams(String key, String value) {
         List<String> anagrams = anagramMap.computeIfAbsent(key, k -> new ArrayList<>());
         if (!anagrams.contains(value)) {
             anagrams.add(value);
         }
+    }
+
+    public static void findAnagrams(String input, List<String> result, Set<String> visited) {
+        List<String> anagrams = anagramMap.get(input);
+        if (anagrams == null || visited.contains(input)) return;
+
+        visited.add(input);
+
+        List<String> filteredAnagrams = anagrams.stream()
+                .filter(anagram -> !anagram.equals(mainInput) && !result.contains(anagram))
+                .toList();
+
+
+        result.addAll(filteredAnagrams);
+
+        for (String anagram : filteredAnagrams) {
+            findAnagrams(anagram, result, visited);
+        }
+    }
+
+    public static void saveAnagrams(String str1, String str2) {
+        addAnagrams(str1, str2);
+        addAnagrams(str2, str1);
     }
 }
