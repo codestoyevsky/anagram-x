@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Utils {
     public static Map<String, HashSet<String>> anagramMap = new HashMap<>();
-    public static String mainInput;
+    public static String input;
 
     public static boolean areAnagrams(String str1, String str2) {
 
@@ -28,23 +28,35 @@ public class Utils {
         Arrays.sort(charArray1);
         Arrays.sort(charArray2);
 
+        var areAnagrams = Arrays.equals(charArray1, charArray2);
+
+        // This can be called out of areAnagrams, we are  breaking SOLID principles but for
+        // this task we can do exception.
+        if (areAnagrams)
+            saveAnagrams(cleanedStr1, cleanedStr2);
+
         return Arrays.equals(charArray1, charArray2);
     }
 
-    // This can be called inside areAnagrams directly, did not want to break Singleton rule (S_OLID)
-    public static void addAnagrams(String key, String value) {
+    private static void saveAnagrams(String str1, String str2) {
+        addAnagrams(str1, str2);
+        addAnagrams(str2, str1);
+    }
+
+    // Save outputs of Feature #1 for to use in Feature #2
+    private static void addAnagrams(String key, String value) {
         HashSet<String> anagrams = anagramMap.computeIfAbsent(key, k -> new HashSet<>());
         anagrams.add(value);
     }
 
-    public static void findAnagrams(String input, Set<String> result, Set<String> visited) {
-        Set<String> anagrams = anagramMap.get(input);
-        if (anagrams == null || visited.contains(input)) return;
+    public static void findAnagrams(String value, Set<String> result, Set<String> visited) {
+        Set<String> anagrams = anagramMap.get(value);
+        if (anagrams == null || visited.contains(value)) return;
 
-        visited.add(input);
+        visited.add(value);
 
         List<String> filteredAnagrams = anagrams.stream()
-                .filter(anagram -> !anagram.equals(mainInput) && !result.contains(anagram))
+                .filter(anagram -> !anagram.equals(input) && !result.contains(anagram))
                 .toList();
 
 
@@ -55,8 +67,4 @@ public class Utils {
         }
     }
 
-    public static void saveAnagrams(String str1, String str2) {
-        addAnagrams(str1, str2);
-        addAnagrams(str2, str1);
-    }
 }

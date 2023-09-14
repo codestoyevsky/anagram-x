@@ -16,26 +16,26 @@ public class Main {
             System.out.println("2 - Show all anagrams for a given text.");
             System.out.println("3 - Exit the program.");
 
-            int choice = scanner.nextInt();
+            // I could use integer value instead of String
+            // For not to add try catch for wrong inputs I have used string.
+            // Less exception is always good.
+            String choice = scanner.next();
 
             // Consume the newline character left in the input buffer
             scanner.nextLine();
 
             switch (choice) {
                 // Feature #1
-                case 1 -> {
+                case "1" -> {
                     System.out.println("Enter the first text:");
                     String str1 = scanner.nextLine();
                     System.out.println("Enter the second text:");
                     String str2 = scanner.nextLine();
                     boolean areAnagrams = areAnagrams(str1, str2);
-                    System.out.printf("These texts %s anagrams%n", areAnagrams ? "are" : "are not");
-                    if (areAnagrams) {
-                        Utils.saveAnagrams(str1, str2);
-                    }
+                    System.out.printf("These texts %s anagrams.%n", areAnagrams ? "are" : "are not");
                 }
                 // Feature #2
-                case 2 -> {
+                case "2" -> {
                     System.out.println("Enter a text to find anagrams:");
                     String input = scanner.nextLine();
 
@@ -43,7 +43,7 @@ public class Main {
                     Set<String> visited = new HashSet<>();
 
                     var cleanedInput = input.trim().toLowerCase();
-                    mainInput = cleanedInput;
+                    input = cleanedInput;
 
                     findAnagrams(cleanedInput, result, visited);
 
@@ -53,7 +53,7 @@ public class Main {
                         System.out.println("Anagrams for " + input + ": " + result);
                     }
                 }
-                case 3 -> {
+                case "3" -> {
                     exit = true;
                     System.out.println("Exiting the program.");
                 }
@@ -63,5 +63,4 @@ public class Main {
 
         scanner.close();
     }
-
 }
