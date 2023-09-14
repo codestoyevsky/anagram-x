@@ -4,13 +4,13 @@ beyonnex.io BE Developer Task
 Write an interactive Java program that provides these 2 features: 
 
 **1 - Checks if two texts are anagrams of each other. 
-2 - Out of all inputs to feature #1: provides all the anagrams for a given string.** 
+2 - Out of all inputs to Feature #1: provides all the anagrams for a given string.** 
 
 Inputs to Feature #1 do not need to persisted across multiple runs of your program.
 The mode of interactivity is not important. Choose what's easiest and quickest for you, 
 a simple CLI interface is enough.
 
-For Feature #1: Please follow the definition described in the english wikipedia page for anagram.
+For Feature #1: Please follow the definition described in the english wikipedia page for anagram. [Link](https://en.wikipedia.org/wiki/Anagram)
 For Feature #2: - Given these hypothetical invocations of the Feature #1 
 function -> f1(A, B), 
 f1(A, C), 
