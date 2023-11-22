@@ -39,9 +39,9 @@ Feel free to use your favorite:
 
 ***RESULT***: The [beyonnex.io](https://beyonnex.io/en#about-us):put_litter_in_its_place:  just ghosted me for a long time even though I pinged them several times. They blamed [DevOp.One](https://devop.one/):put_litter_in_its_place: , their recruiting partner, who somehow couldn't reach me. Both parties have my email and phone numbers :disappointed:
 
-*At least they had the ethic to mention that my task was accepted as a passed one.*
+*At least they had the ethics to mention that my task was accepted as a passed one.*
 
-As a result, interesting task, waste of 6 hours of personal time, very bad Recruiting internal and external recruiting team :thumbsdown:
+As a result, interesting task, a waste of 6 hours of personal time, very bad internal and external recruiting team :thumbsdown:
 
 
 
